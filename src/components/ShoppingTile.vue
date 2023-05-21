@@ -71,26 +71,27 @@ $bottom-distance: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: fit-content;
+    height: 100%;
 }
 
 .image-area-container {
     padding: 5px;
-    justify-items: center;
     align-items: center;
     flex-direction: column;
     display: flex;
     position: relative;
     max-height: 50%;
     max-width: fit-content;
-    width: auto;
+    // only works in chrome
+    aspect-ratio: 16/9;
 }
 
 
 .image-container {
-    display: flex;
-    width: auto;
+    display: table;
     max-height: 100%;
-    aspect-ratio: 16/9;
+    max-width: 100%;
 }
 
 img {

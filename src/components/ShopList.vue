@@ -21,7 +21,7 @@ const emit = defineEmits(['addToCart']);
 .shopping-tile-container {
     display: flex;
     flex-direction: column;
-    height: 30rem;
+    height: 35rem;
 }
 
 .shopping-tile {
@@ -31,7 +31,7 @@ const emit = defineEmits(['addToCart']);
     height: 100%;
 }
 
-@media screen and (min-width: 720px){
+@media screen and (min-width: 770px){
     .shopping-tile-container {
         flex-direction: row;
     }

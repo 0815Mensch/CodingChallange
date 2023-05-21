@@ -7,6 +7,8 @@ export type ShoppingTileType = {
     specialPrice: boolean;
 };
 
+// Would put it as a JSON, but the data would come from the backend usually anyways.
+
 const scottControllerTile: ShoppingTileType = {
     id: 0,
     name: "Scott Controller",
