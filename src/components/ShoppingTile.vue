@@ -136,18 +136,10 @@ img {
     width: $width;
 }
 
-@media screen and (min-width: 720px){
+@media screen and (min-width: 770px){
     .main-text {
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 7;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-}
-@media screen and (min-width: 900px){
-    .main-text {
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 7;
+        -webkit-line-clamp: 12;
         text-overflow: ellipsis;
         overflow: hidden;
     }
