@@ -42,3 +42,14 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
+.padding {
+  padding: 10px;
+}
+
+hr {
+  margin: 0px 0em; 
+  border: 1px solid lightgrey; 
+  border-radius: 1em; 
+  background-color: gray;
+}

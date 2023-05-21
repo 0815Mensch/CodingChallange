@@ -1,93 +1,97 @@
 <template>
-    <transition name="modal">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <slot name="header">
-                        You are adding a controller to the cart!
-                        </slot>
-                    </div>  
-
-                    <div class="modal-body">
-                        <slot name="body">
-                        You are adding the item {{ name }} {{ quantity }} time(s) to the cart!
-                        </slot>
-                    </div>
-
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            <button class="modal-default-button primary-btn" @click="emit('close', quantity)">
-                                OK
-                            </button>
-                        </slot>
-                    </div>
-                </div>
+  <!-- In this process I learned that the very simple animations I always used need TailwindCSS.-->
+  <!-- I tried to make an animation in CSS but it took me longer than I had planned for this challange.-->
+  <!-- I'll gladly learn how to do that in the future :) -->
+    <TransitionRoot
+    :show="open"
+    as="template"
+    enter="duration-300 ease-out"
+    enter-from="opacity-0"
+    enter-to="opacity-100"
+    leave="duration-200 ease-in"
+    leave-from="opacity-100"
+    leave-to="opacity-0"
+  >
+    <Dialog :initial-focus="okButton" @close="emit('close', quantity)">
+      <div class="backdrop" aria-hidden="true"></div>
+      <div class="modal-container">
+        <DialogPanel class="dialog-panel">
+          <div class="padding">
+            <DialogTitle class="dialog-title">You are adding a controller!</DialogTitle>
+            <hr>
+            <p class="dialog-body">
+              You are adding the {{ name }} {{ quantity }} time(s) to the cart.
+            </p>
+            <div class="btn-container">
+              <button class="right-align primary-btn full-radius" ref="okButton" @click="emit('close', quantity)">OK</button>
             </div>
-        </div>
-    </transition>
+          </div>
+        </DialogPanel>
+      </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
+  import {
+    TransitionRoot,
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+  } from '@headlessui/vue'
 
-const emit = defineEmits(["close"]);
+  const okButton = ref(null);
 
-defineProps({
+  const emit = defineEmits(['close', 'closed']);
+
+  defineProps({
+    open: {type: Boolean, required: true},
     name: {type: String},
     quantity: {type: Number}
-});
+  });
 
 </script>
 
-<style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
+<style scoped lang="scss">
+$text-shadow: none;
 
 .modal-container {
-  width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
+
+.btn-container {
+  justify-content: right;
+  justify-items: right;
+  width: 100%;
+  display: flex;
 }
 
-.modal-body {
-  margin: 20px 0;
+.dialog-panel {
+  background-color: white;
+  width: 100%;
+  max-width: 20rem;
+  border-radius: 0.25rem;
 }
 
-.modal-default-button {
-  float: right;
+.backdrop {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba($color: #000000, $alpha: 0.3);
 }
 
-.modal-enter-from, .modal-leave-to {
-  opacity: 0;
+.dialog-body {
+  color: black;
+  text-shadow: $text-shadow;
 }
-
-.modal-enter-active .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+.dialog-title {
+  color: red;
+  text-shadow: $text-shadow;
+  font-size: large;
 }
 </style>

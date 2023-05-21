@@ -24,6 +24,7 @@ $bgcolor: #ff000088;
 }
 
 #header-container > * {
+    margin-right: 5px;
     margin-left: 5px;
 }
 

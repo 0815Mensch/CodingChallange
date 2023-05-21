@@ -1,20 +1,20 @@
 <template>
     <div class="tile-container">
-            <div class="image-area-container">
-                <span class="text-overlay title title-overlay">
-                    {{ shoppingTile.name }}
-                </span>
-                <div class="image-container">
-                    <img :src="imgPathPrefix + shoppingTile.imgPath" alt="Nice image of a controller"/>
-                </div>
-                <span v-if="shoppingTile.specialPrice" class="text-overlay badge">Special Offer!</span>
-            </div>
-            <span class="title">
-                {{ shoppingTile.title }}
+        <div class="image-area-container">
+            <span class="text-overlay title title-overlay">
+                {{ shoppingTile.name }}
             </span>
-            <p class="main-text">
-                {{ shoppingTile.description }}
-            </p>
+            <div class="image-container">
+                <img :src="imgPathPrefix + shoppingTile.imgPath" alt="Nice image of a controller"/>
+            </div>
+            <span v-if="shoppingTile.specialPrice" class="text-overlay badge">Special Offer!</span>
+        </div>
+        <span class="title">
+            {{ shoppingTile.title }}
+        </span>
+        <p class="main-text">
+            {{ shoppingTile.description }}
+        </p>
         <div class="tile-footer">
             <NumberSpinner @number-changed="onNumberChanged"/>
             <button @click="emit('addToCart', shoppingTile.title, quantity)" class="primary-btn text-center full-radius">Add to Cart</button>
@@ -69,6 +69,7 @@ $bottom-distance: 10px;
     box-shadow: 15px 20px 15px rgba(129, 43, 43, 0.664);
     position: relative;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -80,7 +81,7 @@ $bottom-distance: 10px;
     display: flex;
     position: relative;
     max-height: 50%;
-    max-width: 100%;
+    max-width: fit-content;
     width: auto;
 }
 
@@ -90,6 +91,11 @@ $bottom-distance: 10px;
     width: auto;
     max-height: 100%;
     aspect-ratio: 16/9;
+}
+
+img {
+    display: flex;
+    max-width: 100%;
 }
 
 .text-overlay {
@@ -102,7 +108,6 @@ $bottom-distance: 10px;
     align-items: center;
     text-align: center;
     color: #fff;
-    z-index: 2;
 }
 
 .title-overlay {
@@ -131,18 +136,10 @@ $bottom-distance: 10px;
     width: $width;
 }
 
-// @media screen and (min-width: 720px){
-//     .main-text {
-//         -webkit-box-orient: vertical;
-//         -webkit-line-clamp: 9;
-//         text-overflow: ellipsis;
-//         overflow: hidden;
-//     }
-// }
 @media screen and (min-width: 720px){
     .main-text {
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 7;
         text-overflow: ellipsis;
         overflow: hidden;
     }

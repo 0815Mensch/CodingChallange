@@ -3,7 +3,7 @@
     <HeaderBar :items-in-cart="itemsInCart"/>
     <ShopList class="shop-list" @addToCart="onAddToCart" :shoppingTiles="shoppingTiles"/>
   </div>
-  <ShoppingModal v-if="showShoppingModal" @close="onShoppingModalClosed" :quantity="quantityAdded" :name="nameAdded"/>
+  <ShoppingModal :open="showShoppingModal" @close="onShoppingModalClosed" :quantity="quantityAdded" :name="nameAdded"/>
 </template>
 
 <script setup lang="ts">
