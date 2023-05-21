@@ -1,6 +1,6 @@
 <template>
     <div class="shopping-tile-container">
-        <ShoppingTile class="shopping-tile" @addToCart="(name: string, quantity: number) => {emit('addToCart', name, quantity)}" v-for="tile in shoppingTiles" :shoppingTile="tile"/>
+        <ShoppingTile :key="tile.id" class="shopping-tile" @addToCart="(name: string, quantity: number) => {emit('addToCart', name, quantity)}" v-for="tile in shoppingTiles" :shoppingTile="tile"/>
     </div>
 </template>
 
