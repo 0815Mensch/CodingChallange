@@ -1,35 +1,44 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+html, body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  background-color: rgb(119, 119, 119);
+  color: rgba(255, 255, 255, 0.89);
+  text-shadow: 2px 2px rgba(0, 0, 0, .3);
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+.primary-btn {
+  background-color: rgb(172, 24, 24);
+  color: white;
+  cursor: pointer;
+  display: flex;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.greyed-btn {
+  background-color: #999999;
+  color: white;
+  cursor: not-allowed;
+  display: flex;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.title {
+  font-size: larger;
+  font-weight: bold;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.left-radius {
+  border-radius: 10px 0 0 10px;
+}
+
+.right-radius {
+  border-radius: 0 10px 10px 0;
+}
+
+.full-radius {
+  border-radius: 10px;
+}
+
+.text-center {
+  justify-content: center;
+  align-items: center;
 }
