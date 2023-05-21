@@ -83,7 +83,6 @@ $bottom-distance: 10px;
     position: relative;
     max-height: 50%;
     max-width: fit-content;
-    // only works in chrome
     aspect-ratio: 16/9;
 }
 
